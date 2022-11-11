@@ -1,0 +1,9 @@
+rootProject.name = 'simple-server'
+
+include 'front-api'
+
+include 'micro-a-replica'
+
+include 'micro-b'
+
+include 'common'

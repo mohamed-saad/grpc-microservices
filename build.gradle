@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.5'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+}
+
+group = 'com.simple'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+subprojects {
+
+	ext {
+		grpcVersion = '1.50.2' // Visit https://mvnrepository.com/artifact/io.grpc/grpc-protobuf
+	}
+
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+		implementation "io.grpc:grpc-netty:${grpcVersion}"
+		implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+		implementation "io.grpc:grpc-stub:${grpcVersion}"
+		implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.12.2'
+
+		implementation group: "javax.annotation", name: "javax.annotation-api", version: "1.3.2"
+		implementation group: "org.jetbrains", name: "annotations", version: "13.0"
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+
+}

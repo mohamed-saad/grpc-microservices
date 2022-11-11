@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.1'
+    }
+}
+
+sourceSets {
+    grpc {
+        java {
+        }
+    }
+}
+
+protobuf {
+    generatedFilesBaseDir = "$projectDir/src"
+
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.12.2'
+    }
+
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
