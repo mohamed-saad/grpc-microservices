@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: front-api-vs
+  namespace: incorta-x-demo
+spec:
+  gateways:
+  - front-api-gw
+  hosts:
+  - front-api-incorta-x-demo.clouddev2.incortacloud-dev.com
+  http:
+  - match:
+    - uri:
+        prefix: /history
+    - uri:
+        exact: /history
+    - uri:
+        prefix: /network
+    - uri:
+        exact: /network
+    - uri:
+        prefix: /calculate
+    - uri:
+        exact: /calculate
+    route:
+    - destination:
+        host: front-api-svc
+        port:
+          number: 8080

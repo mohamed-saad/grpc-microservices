@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audit-service
+  namespace: incorta-x-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-b
+  template:
+    metadata:
+      labels:
+        app: micro-b
+    spec:
+      containers:
+        - name: audit-service
+          image: us.gcr.io/incorta-cloud-dev/incorta-x-demo/micro-b:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
