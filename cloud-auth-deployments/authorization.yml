@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+ name: authorization-policy
+ namespace: incorta-x-demo
+spec:
+ action: 'DENY'
+ rules:
+ - from:
+   - source:
+       notNamespaces: ["incorta-x-demo"]
+   to:
+   - operation:
+       methods: ["POST"]
+       ports: ['8080']

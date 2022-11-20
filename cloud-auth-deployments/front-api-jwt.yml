@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: front-api-jwt
+  namespace: incorta-x-demo
+spec:
+  selector:
+    matchLabels:
+      app: front-api
+  jwtRules:
+  - issuer: "https://incorta-staging.eu.auth0.com/"
+    jwksUri: "https://incorta-staging.eu.auth0.com/.well-known/jwks.json"

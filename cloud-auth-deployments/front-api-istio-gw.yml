@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: front-api-gw
+  namespace: incorta-x-demo
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - front-api-incorta-x-demo.clouddev2.incortacloud-dev.com
+    port:
+      name: http
+      number: 8080
+      protocol: HTTP

@@ -33,6 +33,8 @@ subprojects {
 
 		implementation group: "javax.annotation", name: "javax.annotation-api", version: "1.3.2"
 		implementation group: "org.jetbrains", name: "annotations", version: "13.0"
+
+                implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	}
 
 	tasks.named('test') {
