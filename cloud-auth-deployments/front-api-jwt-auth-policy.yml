@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-api-jwt-auth-policy
+  namespace: incorta-x-demo
+spec:
+  selector:
+    matchLabels:
+      app: front-api
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+       requestPrincipals: ["*"]

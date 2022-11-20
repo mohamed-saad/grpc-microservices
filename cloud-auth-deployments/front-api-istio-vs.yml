@@ -11,6 +11,10 @@ spec:
   http:
   - match:
     - uri:
+        prefix: /login
+    - uri:
+        prefix: /oauth2
+    - uri:
         prefix: /history
     - uri:
         exact: /history
@@ -27,3 +31,8 @@ spec:
         host: front-api-svc
         port:
           number: 8080
+  - match:
+    - uri:
+        exact: /
+    redirect:
+      uri: /history

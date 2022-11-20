@@ -28,3 +28,8 @@ spec:
             limits:
               memory: "1G"
               cpu: "1"
+          env:
+          - name: AUTH0_CLIENT_ID
+            value: Hsur2HdEyk6VLenciWJABvb5uFFnHQPm
+          - name: AUTH0_CLIENT_SECRET
+            value: 0p_JXmFiXNiK-ekN1w5EB6d2Kj_Ky6dJ6g5BAfDm7fCXOcAnwypPiU44yhPfjGop
